@@ -89,3 +89,20 @@ Date: 2026-11-18 · Checked commit: `60325ed` (23 commits; history and working t
 | `python -B -m unittest discover -s tests` | 38 tests, OK |
 
 `Interpretation:` this repeats the section 2 scans on the published history; no positive control was rerun (the section 2 control still applies, same binaries). The text of this section was written after these scans; the working-tree scans were repeated once after it was added (0 findings, both tools, see the commit that adds it). The limits in section 6 apply unchanged.
+
+### Hosted state after the `v0.1.0` tag
+
+The tag `v0.1.0` and the GitHub release were created on 2026-11-18 at `070ffb3f1e67e9ec472014808befdaed455357e4`, the tip of `main` at that time. `CHANGELOG.md` already had a 0.1.0 section; `v0.1.0` is now a real tag, and this update did not change `CHANGELOG.md`. The table below was generated from a saved read-only GitHub API response of 2026-11-19, taken while `main` was still at that commit. This documentation update and the metrics commit that follows it came after the tag: `main` is ahead of `v0.1.0` by those commits. The tag was not moved and no new tag was created.
+
+| Item | State |
+|---|---|
+| Read | GitHub API read on 2026-11-19 (mode: read-only) for KemalG-u/look-before-you-code |
+| Publication | https://github.com/KemalG-u/look-before-you-code (visibility=public private=False; fork=False) |
+| Branch tip | `main` was at `070ffb3f1e67e9ec472014808befdaed455357e4` when read |
+| CI on the branch tip | workflow "CI" (`.github/workflows/ci.yml`), run 44373034040, event push, conclusion success, commit `070ffb3f1e67e9ec472014808befdaed455357e4`: https://github.com/KemalG-u/look-before-you-code/actions/runs/44373034040 |
+| Security settings | secret scanning: enabled; push protection: enabled; private vulnerability reporting: enabled; Dependabot alerts: enabled; Dependabot security updates: disabled |
+| Topics | 5: agent-skills, ai-agents, claude-code, codex, hooks |
+| Community health | health percentage 100; readme, license, contributing, code_of_conduct present |
+| Release and tag | tag `v0.1.0` points to `070ffb3f1e67e9ec472014808befdaed455357e4` (lightweight); GitHub release published: https://github.com/KemalG-u/look-before-you-code/releases/tag/v0.1.0; tag equals the `main` tip read |
+| Profile pin | 3 pinned items; this repository is among them |
+| Profile README | profile README mentions the repository |
