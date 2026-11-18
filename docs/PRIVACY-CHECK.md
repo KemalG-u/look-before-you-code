@@ -2,13 +2,13 @@
 
 What was checked before this repository was made public: which tool, which version, which commit, and how many results. Raw scanner output is **not** published. No secret value appears in this file or anywhere in the repository. Counts are copied from tool output.
 
-Check date: 2026-11-18 · Checked tree/commit: `93e69c5` (history and working tree; this file was added in the next commit and its own text was checked afterwards, see section 6) · Record: contemporaneous (written right after the runs)
+Check date: 2026-11-18 · Checked tree/commit: `a1da445` (history and working tree, after the review fixes; the same scans were first run at `93e69c5` with the same result of 0 findings; the update of this file was committed afterwards and its own text was checked after that, see section 6) · Record: contemporaneous (written right after the runs)
 
 ## 1. Publication method
 
 | Item | Value |
 |---|---|
-| History option | Fresh repository with its real development history (12 commits at the checked commit); no squash, no rewrite. The original private files and their earlier history are not published |
+| History option | Fresh repository with its real development history (20 commits at the checked commit); no squash, no rewrite. The original private files and their earlier history are not published |
 | Source repository modified? | No. The private source files were read only; their SHA-256 prefixes and modification times (2026-11-17 23:44) were recorded before and are unchanged: skill `92d9003382a9c4a0`, gate script `f39f8796bacabf65` |
 | Commit identity (name, e-mail domain) in published history | Maintainer's public name; e-mail domain `users.noreply.github.com` only (GitHub noreply address, checked with `gh api user`) |
 | Files excluded from export | 0. Nothing was exported: all files were written new in this repository. The owner's exclusion list was applied (no listed path was opened or copied) |
@@ -17,10 +17,10 @@ Check date: 2026-11-18 · Checked tree/commit: `93e69c5` (history and working tr
 
 | Tool | Version | Scope (commit) | Commits scanned | Findings | Real / uncertain | Placeholder / test data |
 |---|---|---|---|---|---|---|
-| Betterleaks (git mode, `--redact=100`, validation off) | 1.10.1 | history @ `93e69c5` | 12 | 0 | 0 / 0 | 0 |
-| Betterleaks (dir mode, `--redact=100`, validation off) | 1.10.1 | working tree @ `93e69c5` | not applicable (tree) | 0 | 0 / 0 | 0 |
-| TruffleHog (`--no-verification --no-update`, git mode) | 3.99.9 | history @ `93e69c5` | 12 (43 chunks, 92,827 bytes) | 0 (0 verified, 0 unverified) | 0 / 0 | 0 |
-| TruffleHog (`--no-verification --no-update`, filesystem mode) | 3.99.9 | working tree @ `93e69c5` | not applicable (tree) | 0 (0 verified, 0 unverified) | 0 / 0 | 0 |
+| Betterleaks (git mode, `--redact=100`, validation off) | 1.10.1 | history @ `a1da445` | 20 | 0 | 0 / 0 | 0 |
+| Betterleaks (dir mode, `--redact=100`, validation off) | 1.10.1 | working tree @ `a1da445` | not applicable (tree) | 0 | 0 / 0 | 0 |
+| TruffleHog (`--no-verification --no-update`, git mode) | 3.99.9 | history @ `a1da445` | 20 (86 chunks, 115,889 bytes) | 0 (0 verified, 0 unverified) | 0 / 0 | 0 |
+| TruffleHog (`--no-verification --no-update`, filesystem mode) | 3.99.9 | working tree @ `a1da445` | not applicable (tree) | 0 (0 verified, 0 unverified) | 0 / 0 | 0 |
 
 Positive control: a scratch repository in a temporary folder outside this repository, with one commit containing a randomly generated GitHub-token-shaped string. Betterleaks reported 1 finding (rule `github-pat`); TruffleHog reported 1 finding (detector `Github`, unverified). Both scanners therefore work on this machine with these flags. The control value was generated at run time and never printed or stored in this repository.
 Findings handling: no findings, so nothing to classify, revoke or clean.
@@ -28,11 +28,11 @@ GitHub secret scanning, push protection and private vulnerability reporting on t
 
 ## 3. Personal data, local paths and agent-specific leaks
 
-Tool: `kontrol.py` 2.0 with extra terms 6 (the terms themselves are not listed here).
+Tool: `kontrol.py` 2.0 with extra terms (the terms themselves are not listed here; the first run used 6 terms, the rerun after the review fixes used 6 other private-setup terms because the first list was not at hand, so the term check is repeated but not identical).
 
 | Check | Count before cleanup | Count after cleanup |
 |---|---|---|
-| Local absolute paths (Windows and Unix user-profile paths) | 1 (a made-up example path in the README "Limits" section, a false positive; rewritten anyway in `7051a3f`) | 0 |
+| Local absolute paths (Windows and Unix user-profile paths) | 2 over the history of edits: a made-up example path in the README "Limits" section (false positive, rewritten in `7051a3f`) and a made-up user-name example in the same section added by the review fixes (false positive, rewritten in `a1da445`) | 0 |
 | E-mail addresses (excluding harmless domains) | 0 | 0 |
 | Personal terms | 0 | 0 |
 | `*.jsonl` (raw agent or conversation logs) | 0 | 0 |
