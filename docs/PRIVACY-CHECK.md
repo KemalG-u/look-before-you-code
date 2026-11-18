@@ -74,3 +74,18 @@ Items that need the maintainer (not the AI tool): all maintainer confirmations r
 ## 6. Limits
 
 `Interpretation:` Scanners can miss secrets and can flag placeholders. A clean result lowers risk; it does not prove absence. The scanners ran locally; no operating-system level network isolation was set up, but both were started with their verification and update features switched off. The positive control used one token shape; it shows the scanners work, not that every secret type is found. This file itself was written after the history scans; a Betterleaks dir-mode scan and a TruffleHog filesystem scan of the working tree run after it was written found 0 findings.
+
+## 7. Re-run after publication
+
+Date: 2026-11-18 · Checked commit: `60325ed` (23 commits; history and working tree; this commit already contains the post-publication wording of sections 2 and 4) · Same tools and flags as section 2, run locally with verification, update check and network validation off; raw output was not stored, only the counts below.
+
+| Check | Result |
+|---|---|
+| Betterleaks 1.10.1 git mode, `--redact=100`, validation off | 0 findings (exit code 0) |
+| Betterleaks 1.10.1 dir mode, `--redact=100`, validation off | 0 findings (exit code 0) |
+| TruffleHog 3.99.9 git mode, `--no-verification --no-update` | 0 findings (0 verified, 0 unverified; 110 chunks, 126,138 bytes) |
+| TruffleHog 3.99.9 filesystem mode, `--no-verification --no-update` | 0 findings (0 verified, 0 unverified; 205 chunks, 461,437 bytes) |
+| `kontrol.py` 2.0 `--kati` (standard files, local paths, e-mail addresses, placeholders, `*.jsonl`, secret-like file names), no extra terms | exit code 0; 0 missing files, 0 findings |
+| `python -B -m unittest discover -s tests` | 38 tests, OK |
+
+`Interpretation:` this repeats the section 2 scans on the published history; no positive control was rerun (the section 2 control still applies, same binaries). The text of this section was written after these scans; the working-tree scans were repeated once after it was added (0 findings, both tools, see the commit that adds it). The limits in section 6 apply unchanged.
