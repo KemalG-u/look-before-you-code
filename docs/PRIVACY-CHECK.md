@@ -49,7 +49,7 @@ Remaining intentional occurrences: the maintainer's name and brand in the copyri
 |---|---|---|
 | Name and trademark conflict search (search engine, GitHub, package registries) | No exact conflict: GitHub repository search for the name returned no repository named `look-before-you-code`; npm registry: not found (404); PyPI `look-before-you-code` and `look_before_you_code`: not found (404). Similar names and ideas exist and are not the same project: `look-before-you-leap` (a Claude Code skill set in `miospotdevteam/claude-control`), `before` / Before You Code (`AbudiHadi/coderv`), `preflight-agent-skill` (`R-Dilipkumar`). No trademark database was searched; `Interpretation:` low risk for a descriptive phrase, not a legal opinion | 2026-11-18; queries: GitHub `look-before-you-code in:name`, `npm view look-before-you-code`, PyPI JSON API, one web search for the phrase |
 | Dependency license inventory (dependency graph / SBOM export) compatible with Apache-2.0 | None needed: the code imports only the Python standard library (`importlib`, `io`, `json`, `os`, `re`, `sys`, `time`, `pathlib`, `subprocess`, `tempfile`, `unittest`), checked by grepping the import lines. CI uses two GitHub actions pinned by SHA (`actions/checkout`, `actions/setup-python`), which are not bundled. No SBOM export exists yet because the repository is not on GitHub | 2026-11-18 |
-| Employer IP: no employer or client code or data in this project | NOT YET CONFIRMED: this needs the maintainer's own statement. The AI tool cannot attest it. Part of the release checklist | KEMAL-VERIFY (date of confirmation) |
+| Employer IP: no employer or client code or data in this project | Confirmed by the maintainer on 2026-11-18: personal project, not owned by an employer. (This is the maintainer's statement; the AI tool cannot attest it.) | 2026-11-18 |
 | Encryption code (export note) | none: the project contains no cryptographic code (it reads files, parses JSON and compares time stamps) | 2026-11-18 |
 
 ## 5. Independent second reading
@@ -69,7 +69,7 @@ Findings, summarised (the review text itself is not published):
 4. The gate expanded `~` and variables in the path, which could make it check another file than the one written; and the README did not name the two-step bypass (write a short file, then overwrite it). Fixed: expansion removed with tests; both are in the Limits section (`1c89264`, `383e9f1`).
 5. Small items: a stray ignore entry for a private folder, an unspecified Codex skill location, an incomplete module list in section 4, the wording of the `Assisted-by` rule, the CHANGELOG showing type prefixes and docs commits (`383e9f1`, `0ad3dc4`).
 
-Items that need the maintainer (not the AI tool) remain marked `KEMAL-VERIFY` in `docs/AI-USE.md` and in section 4.
+Items that need the maintainer (not the AI tool): all maintainer confirmations recorded on 2026-11-18, in `docs/AI-USE.md` and in section 4.
 
 ## 6. Limits
 
