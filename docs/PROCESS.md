@@ -47,7 +47,7 @@ History option: the repository was created fresh for the extraction and its real
 | Tests | `python -B -m unittest discover -s tests` | See [METRICS.md](METRICS.md): all tests run and pass, none skipped. Before the review fixes one test skipped itself on the author's machine because the temporary directory name matched a default exempt word; that default was removed ([devlog](devlog/2026-11-18-exempt-substring-surprise.md)). The suite was run with the machine's normal temporary directory and with a clean one | 2026-11-18 |
 | README example in the repository | `python -B examples/demo.py` | First call exit code 2 with the block message, second call exit code 0 after the note was written | 2026-11-18 |
 | Secret and privacy scans | see [PRIVACY-CHECK.md](PRIVACY-CHECK.md) | See that file | 2026-11-18 |
-| CHANGELOG | `git cliff --tag v0.1.0 --output CHANGELOG.md` (git-cliff 2.14.2) | Output compared with `git log --format=%s`: every `feat` and `docs` commit is listed, and `chore`, `ci`, `test` commits are skipped by the `cliff.toml` rules | 2026-11-18 |
+| CHANGELOG | `git cliff --tag v0.1.0 --output CHANGELOG.md` (git-cliff 2.14.2) | Output compared with `git log --format=%s`: every `feat` and `fix` commit is listed (without the type prefix), and `docs`, `chore`, `ci`, `test` commits are skipped by the `cliff.toml` rules | 2026-11-18 |
 
 ## Known limits
 

@@ -30,20 +30,20 @@ trim = true
 footer = ""
 
 [git]
-# Raw first-line matching (same approach as the official keepachangelog example).
-conventional_commits = false
+# Conventional commits: the "type(scope):" prefix is parsed off, so entries show only the description.
+conventional_commits = true
 filter_unconventional = false
 filter_commits = false
 tag_pattern = "v[0-9].*"
 sort_commits = "oldest"
 commit_parsers = [
-  { message = "^(chore|ci|build|style|test)(\\(.*\\))?!?:", skip = true },
+  { message = "^(chore|ci|build|style|test|docs?)(\\(.*\\))?!?:", skip = true },
   { message = "^chore\\(release\\)", skip = true },
   { message = "^security(\\(.*\\))?!?:", group = "Security" },
   { message = "^feat(\\(.*\\))?!?:", group = "Added" },
   { message = "^fix(\\(.*\\))?!?:", group = "Fixed" },
   { message = "^deprecate(\\(.*\\))?!?:", group = "Deprecated" },
   { message = "^remove(\\(.*\\))?!?:", group = "Removed" },
-  { message = "^(refactor|perf|docs?)(\\(.*\\))?!?:", group = "Changed" },
+  { message = "^(refactor|perf)(\\(.*\\))?!?:", group = "Changed" },
   { message = ".*", group = "Changed" },
 ]
