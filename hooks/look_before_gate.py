@@ -25,7 +25,7 @@ Configuration (environment variables; every invalid value falls back to its defa
   LOOK_BEFORE_EXTENSIONS    comma-separated code extensions
                             (default ".py,.js,.ts,.tsx,.mjs,.go,.rs,.svelte,.ps1,.sh")
   LOOK_BEFORE_EXEMPT        comma-separated, case-insensitive substrings; a path containing any of
-                            them is never blocked (default "test,fixture,scratchpad,_tmp,.claude,.agents");
+                            them is never blocked (default "test,fixture,.claude,.agents");
                             setting it REPLACES the default list
   LOOK_BEFORE_ROOT_MARKERS  comma-separated names that mark a project root (default ".git")
   LOOK_BEFORE_DISABLE       set to 1 to switch the gate off
@@ -37,7 +37,7 @@ import sys
 import time
 
 DEFAULT_EXTENSIONS = ".py,.js,.ts,.tsx,.mjs,.go,.rs,.svelte,.ps1,.sh"
-DEFAULT_EXEMPT = "test,fixture,scratchpad,_tmp,.claude,.agents"
+DEFAULT_EXEMPT = "test,fixture,.claude,.agents"
 DEFAULT_MARKERS = ".git"
 DEFAULT_NOTES_DIR = ".prior-art"
 DEFAULT_MIN_LINES = 30
@@ -96,7 +96,8 @@ def count_lines(text):
 
 
 def absolute(path, cwd):
-    path = os.path.expandvars(os.path.expanduser(path))
+    # The path is used exactly as the tool will write it: no "~" or "$VAR" expansion, because
+    # the Write tool does not expand them either (a gate that did would check another file).
     if not os.path.isabs(path):
         path = os.path.join(cwd or os.getcwd(), path)
     return os.path.normpath(path)

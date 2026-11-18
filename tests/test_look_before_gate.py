@@ -131,13 +131,19 @@ class TestAllows(GateTestCase):
         self.assertEqual(run_gate(self.write_payload(rel="FIXTURE-DIR/gen.py", n=100))[0], 0)
 
     def test_default_exempt_list(self):
-        defaults = ("test", "fixture", "scratchpad", "_tmp", ".claude", ".agents")
+        defaults = ("test", "fixture", ".claude", ".agents")
         if any(word in self.root.as_posix().lower() for word in defaults):
             self.skipTest("the temporary directory path itself matches a default exempt word")
         env = {"LOOK_BEFORE_EXEMPT": ""}  # empty value falls back to the built-in list
         for rel in ("tests/test_a.py", "src/fixtures/x.py", ".claude/hooks/h.py", ".agents/s/x.py"):
             self.assertEqual(run_gate(self.write_payload(rel=rel), env)[0], 0, rel)
         self.assertEqual(run_gate(self.write_payload(rel="src/real.py"), env)[0], 2)
+
+    def test_removed_defaults_are_no_longer_exempt(self):
+        # "scratchpad" and "_tmp" were removed from the defaults (they referred to one machine).
+        env = {"LOOK_BEFORE_EXEMPT": ""}
+        for rel in ("scratchpad/gen.py", "src/_tmp/gen.py", "src/my_tmp_dir/gen.py"):
+            self.assertEqual(run_gate(self.write_payload(rel=rel), env)[0], 2, rel)
 
     def test_no_project_root_is_allowed(self):
         # No marker anywhere above this path, and cwd has none either.
@@ -201,6 +207,30 @@ class TestConfiguration(GateTestCase):
         self.assertEqual(run_gate(self.write_payload(), env)[0], 0)
         (self.root / ".other-marker").write_text("", encoding="utf-8")
         self.assertEqual(run_gate(self.write_payload(), env)[0], 2)
+
+
+class TestPathIsNotExpanded(GateTestCase):
+    """The gate checks the path exactly as written; it must not expand "~" or variables."""
+
+    def expand_env(self):
+        # If the gate expanded these, the file would land in the exempt directory.
+        home = str(self.root / "fixture-dir")
+        return {"HOME": home, "USERPROFILE": home, "LB_HOME": home}
+
+    def payload_for(self, file_path):
+        return {
+            "tool_name": "Write",
+            "cwd": str(self.root),
+            "tool_input": {"file_path": file_path, "content": lines(40)},
+        }
+
+    def test_tilde_is_not_expanded(self):
+        self.assertEqual(run_gate(self.payload_for("~/new.py"), self.expand_env())[0], 2)
+
+    def test_variables_are_not_expanded(self):
+        env = self.expand_env()
+        self.assertEqual(run_gate(self.payload_for("$LB_HOME/new.py"), env)[0], 2)
+        self.assertEqual(run_gate(self.payload_for("%LB_HOME%/new.py"), env)[0], 2)
 
 
 class TestApplyPatch(GateTestCase):
