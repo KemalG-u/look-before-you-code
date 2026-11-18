@@ -54,7 +54,22 @@ Remaining intentional occurrences: the maintainer's name and brand in the copyri
 
 ## 5. Independent second reading
 
-Not yet done. A fresh-context reviewer agent is to review the tree adversarially before release; the result (passed or failed, date, commit, open findings) will be recorded here and in the release record. (A reviewer is an AI tool; this is an additional read, not a sign-off.)
+| Item | Value |
+|---|---|
+| Date | 2026-11-18 |
+| Reader | Fresh-context reviewer agent (Claude Opus); an AI tool, so this is an additional adversarial read, not a human sign-off |
+| Tree read | `d590fe9` (before the fixes) |
+| Result | Minor fixes required; fixed in commits `75bdbce`, `d43b4a9`, `1c89264`, `383e9f1`, `0ad3dc4` |
+
+Findings, summarised (the review text itself is not published):
+
+1. `SECURITY.md` said secret scanning and push protection are enabled, while the repository is not on GitHub yet. Fixed: it now says they, and private vulnerability reporting, will be enabled when the repository is published (`75bdbce`).
+2. The README and the AI-use statement said the private original had been "in daily use". The files were written on the night of 2026-11-17 and generalised on 2026-11-18. Fixed: the origin is stated with those dates (`d43b4a9`).
+3. The default exempt list contained two entries that exist only on the author's machine (`scratchpad`, `_tmp`), and one test skipped itself because of it. Fixed: both removed, tests no longer skip (`1c89264`, `383e9f1`).
+4. The gate expanded `~` and variables in the path, which could make it check another file than the one written; and the README did not name the two-step bypass (write a short file, then overwrite it). Fixed: expansion removed with tests; both are in the Limits section (`1c89264`, `383e9f1`).
+5. Small items: a stray ignore entry for a private folder, an unspecified Codex skill location, an incomplete module list in section 4, the wording of the `Assisted-by` rule, the CHANGELOG showing type prefixes and docs commits (`383e9f1`, `0ad3dc4`).
+
+Items that need the maintainer (not the AI tool) remain marked `KEMAL-VERIFY` in `docs/AI-USE.md` and in section 4.
 
 ## 6. Limits
 
