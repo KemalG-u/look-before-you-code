@@ -11,7 +11,7 @@
 
 Please do **not** open a public issue for a security problem.
 
-Report it privately with GitHub's private vulnerability reporting: open the repository's **Security** tab and choose **Report a vulnerability** (https://github.com/KemalG-u/look-before-you-code/security/advisories/new). The repository does not exist on GitHub yet; private vulnerability reporting will be enabled when the repository is published, and until then this link does not work.
+Report it privately with GitHub's private vulnerability reporting: open the repository's **Security** tab and choose **Report a vulnerability** (https://github.com/KemalG-u/look-before-you-code/security/advisories/new). Private vulnerability reporting was enabled on 2026-11-18, when the repository was made public (checked with the GitHub API on that date).
 
 Include: affected version, a description, steps to reproduce, and the impact you see. Never include real secrets or personal data in a report; describe where they appear instead.
 
@@ -25,4 +25,4 @@ In scope: the gate hook (`hooks/look_before_gate.py`), for example a way to make
 
 ## Repository hygiene
 
-The publication of this repository was checked for committed secrets and personal data; the checks and their result counts are in [docs/PRIVACY-CHECK.md](docs/PRIVACY-CHECK.md). Secret scanning and push protection will be enabled when the repository is published. If you find a secret or personal data that was missed, report it through the private channel above.
+The publication of this repository was checked for committed secrets and personal data; the checks and their result counts are in [docs/PRIVACY-CHECK.md](docs/PRIVACY-CHECK.md). Secret scanning, push protection and Dependabot alerts were enabled on 2026-11-18, when the repository was made public (checked with the GitHub API on that date). If you find a secret or personal data that was missed, report it through the private channel above.

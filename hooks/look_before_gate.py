@@ -96,8 +96,9 @@ def count_lines(text):
 
 
 def absolute(path, cwd):
-    # The path is used exactly as the tool will write it: no "~" or "$VAR" expansion, because
-    # the Write tool does not expand them either (a gate that did would check another file).
+    # The path is used exactly as received: no "~" or "$VAR" expansion. The gate does not assume
+    # the host expands them (the README "Limits" section says what follows if a host does);
+    # a gate that expanded them could check a different file than the one written.
     if not os.path.isabs(path):
         path = os.path.join(cwd or os.getcwd(), path)
     return os.path.normpath(path)
