@@ -26,7 +26,7 @@ All code, tests and documents in this repository were written by AI coding agent
 
 ## What the AI did
 
-- Read the original private gate and skill and listed what was specific to the maintainer's setup (language, a notes folder name, a project marker file, an exemption entry, a name in a comment).
+- Read the original private gate and skill and listed what was specific to the maintainer's setup (language, a notes folder name, a project marker file, exemption entries, a name in a comment).
 - Rewrote the gate with configuration by environment variables and English messages, keeping the original blocking logic ([decision 0003](decisions/0003-generic-defaults.md)).
 - Wrote the unit tests, the skill text in English, the examples, the README and the other documents, and the draft of this file.
 - Checked the hook syntax of Claude Code and Codex against their online documentation on 2026-11-18.

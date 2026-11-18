@@ -15,11 +15,11 @@ One sentence: what is needed, which language or runtime, which constraints.
 
 In the same turn, independently:
 
+- Local first: the project's own code (`rg "<name>"`) and the dependencies it already has. Do not rewrite what is already there.
 - The official SDK and documentation for the service or protocol.
 - Package registries (PyPI, npm, crates.io, pkg.go.dev, and so on).
 - GitHub: `gh search repos "<topic>" --sort updated` and `gh search code "<signature>"`.
 - Skill and MCP directories, if your agent uses them.
-- Local first: the project's own code (`rg "<name>"`) and the dependencies it already has. Do not rewrite what is already there.
 
 ## 3. Shortlist
 

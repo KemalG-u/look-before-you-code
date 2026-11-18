@@ -25,6 +25,10 @@ The first test file did not set the exempt list for the stdout/stderr test, so o
 - The README "Limits" section now says the substring match is broad and tells users to check it first when a call is unexpectedly allowed.
 - The matching rule itself was not changed. `Interpretation:` Matching whole path components would be stricter and less surprising; it was left out of 0.1.0 to keep the behaviour of the origin and is a candidate change.
 
+## Update: fixed in 0.1.0
+
+An independent review pointed out that the default list should not contain names from one machine. `scratchpad` and `_tmp` were removed from the default exempt list before the first release (see [decision 0003](../decisions/0003-generic-defaults.md)), so a temporary directory is no longer exempt by default. `test_default_exempt_list` now runs on every machine instead of skipping itself here; the full suite is 38 tests with no skip. The substring matching rule itself is unchanged.
+
 ## Evidence
 
 - Commit: `9ac1c1f` (tests with explicit exempt list and the skip guard), `376f841` (demo with explicit exempt list)

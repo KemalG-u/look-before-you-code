@@ -46,7 +46,7 @@ The gate reads `tool_input.file_path` and `tool_input.content` of the `Write` to
 
 1. Copy `hooks/look_before_gate.py` to `.codex/hooks/` in your project.
 2. Merge [`examples/codex-hooks.json`](examples/codex-hooks.json) into `.codex/hooks.json` (or `~/.codex/hooks.json`), then review and trust the hook with `/hooks` in the Codex CLI; non-managed hooks do not run before that.
-3. Put the skill where your Codex version reads skills.
+3. Copy `skills/look-before-you-code/` to `.agents/skills/` in your repository (or to `~/.agents/skills/` for all projects). These are the repository and user skill locations in the [Codex skills documentation](https://learn.chatgpt.com/docs/build-skills) (read 2026-11-18; the old `developers.openai.com/codex/skills` address redirects there). The skill has not been loaded in a live Codex session by the author.
 
 The hook syntax above follows the [Codex hooks documentation](https://learn.chatgpt.com/docs/hooks) (checked 2026-11-18). The gate parses `*** Add File:` sections of the `apply_patch` payload; this is covered by unit tests with synthetic payloads. It has **not** been run inside a live Codex session by the author (see [AI-USE](docs/AI-USE.md)).
 
@@ -60,7 +60,7 @@ Environment variables, read on every call. An invalid value falls back to its de
 | `LOOK_BEFORE_NOTES_DIR` | `.prior-art` | Notes directory, relative to the project root (an absolute path is used as is) |
 | `LOOK_BEFORE_WINDOW_HOURS` | `6` | How recent a note must be |
 | `LOOK_BEFORE_EXTENSIONS` | `.py,.js,.ts,.tsx,.mjs,.go,.rs,.svelte,.ps1,.sh` | Code extensions that are checked |
-| `LOOK_BEFORE_EXEMPT` | `test,fixture,scratchpad,_tmp,.claude,.agents` | Case-insensitive substrings; a path containing one is never blocked. Setting it **replaces** the list |
+| `LOOK_BEFORE_EXEMPT` | `test,fixture,.claude,.agents` | Case-insensitive substrings; a path containing one is never blocked (`.claude` and `.agents` are the agents' own configuration folders). Setting it **replaces** the list |
 | `LOOK_BEFORE_ROOT_MARKERS` | `.git` | File or directory names that mark a project root |
 | `LOOK_BEFORE_DISABLE` | unset | `1` switches the gate off |
 
@@ -74,12 +74,14 @@ Decide whether `.prior-art/` is committed or ignored in your project; the gate o
 
 ## Limits
 
-- **Substring exemptions are broad.** The exempt list matches anywhere in the absolute path, so a parent directory named `latest-work` matches `test`, and a temporary directory called `..._tmp...` matches `_tmp`. When a call is unexpectedly allowed, check this first (the story is in [devlog](docs/devlog/2026-11-18-exempt-substring-surprise.md)). Narrow the list with `LOOK_BEFORE_EXEMPT`.
+- **Substring exemptions are broad.** The exempt list matches anywhere in the absolute path, so a parent directory named `latest-work` matches `test`, and a home directory called `/home/tester` exempts everything under it. When a call is unexpectedly allowed, check this first (the story is in [devlog](docs/devlog/2026-11-18-exempt-substring-surprise.md); version 0.1.0 removed two machine-specific default entries that had caused it). Narrow the list with `LOOK_BEFORE_EXEMPT`.
 - **Honor system.** Any fresh `.md` file in the notes directory opens the gate, whatever it contains. An agent can write a hollow note. The skill asks for sources and dates; the gate cannot check them.
 - **Only `Write` and `apply_patch`.** Shell redirection or other editing tools are not seen. Add matchers for them yourself if you need to.
 - **Only new files.** Overwriting or growing an existing file is never blocked.
+- **Two-step bypass.** The gate only checks the creation of a new file. An agent can first write a short or empty file (under the threshold, so it passes) and then overwrite it with the long content; the second call targets an existing file and is not checked.
+- **The path is taken as written.** The gate does not expand `~` or environment variables in `file_path`; it checks the path exactly as the `Write` tool receives it, so `~/x.py` is treated as a relative path under the working directory. If your host expands such paths itself, the gate may look at a different location than the one written.
 - **Fail-open means silent failure.** If the hook is wired wrongly it does nothing and says nothing. Run `python3 examples/demo.py` and a real blocked write after installing.
-- Windows paths and `apply_patch` payloads are handled, but only the unit tests and a Windows run of the author exercised them.
+- Windows paths and `apply_patch` payloads are handled, but only the unit tests and a Windows run by the AI tool that did the extraction exercised them.
 
 ## Tests
 

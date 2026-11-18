@@ -46,7 +46,7 @@ docs: explain the new option
 AI tools are allowed under these rules. They follow the common core of other projects' policies ([LLVM](https://llvm.org/docs/AIToolPolicy.html), [Ghostty](https://github.com/ghostty-org/ghostty/blob/main/AI_POLICY.md), [Linux kernel](https://docs.kernel.org/process/coding-assistants.html)).
 
 1. **You are responsible.** You must understand every line you submit, have run it, and be able to explain it in review. "The AI wrote it" is not an answer to a review comment.
-2. **Disclose.** State significant AI assistance (tool or model, and for what) in the pull request description, and mark it in the commit with a trailer: `Assisted-by: TOOL:MODEL` (example: `Assisted-by: ExampleAgent:example-model-1`). Routine editor autocompletion needs no disclosure.
+2. **Disclose.** State significant AI assistance (tool or model, and for what) in the pull request description, and mark it in the commit with a trailer: `Assisted-by: TOOL` (naming the model as well is recommended but not required: `Assisted-by: TOOL:MODEL`, for example `Assisted-by: ExampleAgent:example-model-1`). Routine editor autocompletion needs no disclosure.
 3. **No human sign-off by proxy.** An AI tool must never add `Signed-off-by` (or any certification of origin). Only a human can certify a contribution.
 4. **No unreviewed output.** Pull requests that look like unreviewed, bulk or autonomously generated output (invented APIs, unrelated changes, boilerplate explanations) will be closed.
 5. **No private data in prompts or patches.** Do not paste secrets, personal data or someone else's code you may not relicense.
