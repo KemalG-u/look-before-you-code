@@ -19,7 +19,7 @@ All code, tests and documents in this repository were written by AI coding agent
 
 ## What the human did
 
-- Decided: the goal (publish a generalised version), the rule that created the need (agents must search before writing new modules, set on 2026-11-18), that the gate fails open (the original code comment states this was a deliberate choice), the copyright holder line and the license. See [decisions/](decisions/).
+- Decided: the goal (publish a generalised version), the rule that created the need (agents must search before writing new modules, set on the night of 2026-11-17, when the original gate and skill were written for the maintainer's own setup; generalised for publication on 2026-11-18), that the gate fails open (the original code comment states this was a deliberate choice), the copyright holder line and the license. See [decisions/](decisions/).
 - Reviewed: KEMAL-VERIFY (what the maintainer actually read before publishing).
 - Ran and checked: KEMAL-VERIFY (whether the maintainer ran the tests and installed the hook himself). The tests were run by the AI tool; see below.
 - Accepted or rejected: KEMAL-VERIFY (examples of AI output the maintainer rejected or changed, with devlog links, or "none").
@@ -44,7 +44,7 @@ All code, tests and documents in this repository were written by AI coding agent
 ## What was not verified
 
 - The gate has **not** been run inside a live Codex session, and the Codex hook file was not loaded by Codex. Only the documented syntax and synthetic `apply_patch` payloads in unit tests back it.
-- The Claude Code hook example was written from the documentation; the extracting agent did not install the public copy as a hook and trigger a real blocked write with it. (The maintainer's private original is in daily use; that is not evidence for this copy.)
+- The Claude Code hook example was written from the documentation; the extracting agent did not install the public copy as a hook and trigger a real blocked write with it. (The private original was written only on the night of 2026-11-17, one day before this extraction, so it has no long record of use; whatever use it has seen is not evidence for this copy.)
 - Behaviour on macOS and on Python versions other than 3.12 was not tested.
 - Whether the thresholds (30 lines, 6 hours) are good values was not measured; they are inherited.
 - The AI-written code was reviewed by the AI tool that wrote it and by no second AI reviewer so far. An independent second reading is planned before release and will be recorded in [PRIVACY-CHECK.md](PRIVACY-CHECK.md) section 5.
