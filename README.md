@@ -74,7 +74,7 @@ Decide whether `.prior-art/` is committed or ignored in your project; the gate o
 
 ## Limits
 
-- **Substring exemptions are broad.** The exempt list matches anywhere in the absolute path, so a parent directory named `latest-work` matches `test`, and a home directory called `/home/tester` exempts everything under it. When a call is unexpectedly allowed, check this first (the story is in [devlog](docs/devlog/2026-11-18-exempt-substring-surprise.md); version 0.1.0 removed two machine-specific default entries that had caused it). Narrow the list with `LOOK_BEFORE_EXEMPT`.
+- **Substring exemptions are broad.** The exempt list matches anywhere in the absolute path, so a parent directory named `latest-work` matches `test`, and so does a user name such as `tester` anywhere in the path. When a call is unexpectedly allowed, check this first (the story is in [devlog](docs/devlog/2026-11-18-exempt-substring-surprise.md); version 0.1.0 removed two machine-specific default entries that had caused it). Narrow the list with `LOOK_BEFORE_EXEMPT`.
 - **Honor system.** Any fresh `.md` file in the notes directory opens the gate, whatever it contains. An agent can write a hollow note. The skill asks for sources and dates; the gate cannot check them.
 - **Only `Write` and `apply_patch`.** Shell redirection or other editing tools are not seen. Add matchers for them yourself if you need to.
 - **Only new files.** Overwriting or growing an existing file is never blocked.
