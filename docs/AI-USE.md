@@ -20,9 +20,9 @@ All code, tests and documents in this repository were written by AI coding agent
 ## What the human did
 
 - Decided: the goal (publish a generalised version), the rule that created the need (agents must search before writing new modules, set on the night of 2026-11-17, when the original gate and skill were written for the maintainer's own setup; generalised for publication on 2026-11-18), that the gate fails open (the original code comment states this was a deliberate choice), the copyright holder line and the license. See [decisions/](decisions/).
-- Reviewed: the maintainer did not review the code line by line. He set the rule and requirements, made the design and publishing decisions, and read the agents' reports and the independent review before approving.
-- Ran and checked: the maintainer did not run the tests himself; the tests, the scans and the independent read were done by AI agents (see below). The original private gate has run live in the maintainer's own setup since the night it was written.
-- Accepted or rejected: none by the maintainer directly (he rejected no line himself). The independent reviewer agent found overstated origin claims, a too-early "enabled" sentence in `SECURITY.md` and author-specific defaults; these were corrected before release (see [PRIVACY-CHECK.md](PRIVACY-CHECK.md) section 5 and commits `75bdbce`, `d43b4a9`, `1c89264`).
+- Reviewed: the maintainer did not review the code line by line. The maintainer set the rule and requirements, made the design and publishing decisions, and read the agents' reports and the independent review before approving.
+- Ran and checked: the maintainer did not run the tests personally; the tests, the scans and the independent read were done by AI agents (see below). The original private gate has run live in the maintainer's own setup since the night it was written.
+- Accepted or rejected: none by the maintainer directly (the maintainer rejected no line personally). The independent reviewer agent found overstated origin claims, a too-early "enabled" sentence in `SECURITY.md` and author-specific defaults; these were corrected before release (see [PRIVACY-CHECK.md](PRIVACY-CHECK.md) section 5 and commits `75bdbce`, `d43b4a9`, `1c89264`).
 
 ## What the AI did
 
@@ -55,7 +55,7 @@ AI involvement is marked with an `Assisted-by: Claude Code` trailer in commits (
 
 ## Copyright note
 
-Copyright rests on human creative contribution. The maintainer contributed: the idea and the rule behind it, the decision to publish, the design requirement that the gate fail open, the choice of license and copyright line, and selection and approval of the result. Confirmed by the maintainer on 2026-11-18: his contribution is the idea and rule, the requirements, and the design and publishing decisions; the code and the text were produced by AI, and nothing here is claimed as human-written. `Interpretation:` Purely machine-generated passages may not be protected; this project does not claim otherwise.
+Copyright rests on human creative contribution. The maintainer contributed: the idea and the rule behind it, the decision to publish, the design requirement that the gate fail open, the choice of license and copyright line, and selection and approval of the result. Confirmed by the maintainer on 2026-11-18: the maintainer's contribution is the idea and rule, the requirements, and the design and publishing decisions; the code and the text were produced by AI, and nothing here is claimed as human-written. `Interpretation:` Purely machine-generated passages may not be protected; this project does not claim otherwise.
 
 ## Limits of this record
 

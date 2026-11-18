@@ -4,7 +4,7 @@ Date: 2026-11-18 · Record: reconstructed on 2026-11-18 (from the maintainer's o
 
 ## Problem
 
-On the night of 2026-11-17 (the private files carry the creation time 23:44 +0300) the maintainer (Kemal) set a standing rule in his own agent setup and had the gate and skill written for it; they were generalised for publication on 2026-11-18. The rule: "look first" before writing a new module. His reason, in his words as relayed for this write-up: his coding agents were writing things from scratch even though ready-made tools already existed. `unverified`: this origin is the maintainer's account. There is no commit, ticket or log in this repository that shows the incidents, and no count of them was kept.
+On the night of 2026-11-17 (the private files carry the creation time 23:44 +0300) the maintainer (Kemal) set a standing rule in the maintainer's own agent setup and had the gate and skill written for it; they were generalised for publication on 2026-11-18. The rule: "look first" before writing a new module. The maintainer's reason, in the maintainer's words as relayed for this write-up: the maintainer's coding agents were writing things from scratch even though ready-made tools already existed. `unverified`: this origin is the maintainer's account. There is no commit, ticket or log in this repository that shows the incidents, and no count of them was kept.
 
 ## Diagnosis
 
