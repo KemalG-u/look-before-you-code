@@ -24,7 +24,7 @@ Check date: 2026-11-18 · Checked tree/commit: `93e69c5` (history and working tr
 
 Positive control: a scratch repository in a temporary folder outside this repository, with one commit containing a randomly generated GitHub-token-shaped string. Betterleaks reported 1 finding (rule `github-pat`); TruffleHog reported 1 finding (detector `Github`, unverified). Both scanners therefore work on this machine with these flags. The control value was generated at run time and never printed or stored in this repository.
 Findings handling: no findings, so nothing to classify, revoke or clean.
-GitHub secret scanning and push protection enabled on the public repository: not yet (the repository does not exist on GitHub; enabling them is part of the release approval step).
+GitHub secret scanning, push protection and private vulnerability reporting on the public repository: not yet enabled (the repository does not exist on GitHub; they will be enabled when the repository is published, as part of the release approval step; [SECURITY.md](../SECURITY.md) says the same).
 
 ## 3. Personal data, local paths and agent-specific leaks
 
