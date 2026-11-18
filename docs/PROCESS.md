@@ -52,6 +52,6 @@ History option: the repository was created fresh for the extraction and its real
 ## Known limits
 
 - The gate was not run in a live Codex session, and the public copy of the Claude Code hook was not installed and exercised end to end (see [AI-USE.md](AI-USE.md)).
-- No CI run exists yet; the workflow has not been executed on GitHub.
-- Only Windows and Python 3.12 were used for the runs above.
+- CI runs on Linux (Python 3.12). The first run, for commit `8742201`, succeeded on 2026-11-18: [run 44311432087](https://github.com/KemalG-u/look-before-you-code/actions/runs/44311432087).
+- The local runs listed above used only Windows and Python 3.12; CI is a separate Linux run on Python 3.12 only.
 - The first CHANGELOG is generated for the planned tag `v0.1.0`; regenerate it on release day.

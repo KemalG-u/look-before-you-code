@@ -36,7 +36,7 @@ All code, tests and documents in this repository were written by AI coding agent
 
 | Claim | Verification | Evidence |
 |---|---|---|
-| The unit tests pass | Run by the AI tool with `python -B -m unittest discover -s tests` on Windows, Python 3.12; CI runs on Linux (Python 3.12) on every push | [METRICS.md](METRICS.md); CI run for commit `8742201` (workflow `CI`, job `test`): success, [run 44311432087](https://github.com/KemalG-u/look-before-you-code/actions/runs/44311432087), 2026-11-18 |
+| The unit tests pass | Run by the AI tool with `python -B -m unittest discover -s tests` on Windows, Python 3.12; CI runs on Linux (Python 3.12) on every push to `main` and on pull requests | [METRICS.md](METRICS.md); CI run for commit `8742201` (workflow `CI`, job `test`): success, [run 44311432087](https://github.com/KemalG-u/look-before-you-code/actions/runs/44311432087), 2026-11-18 |
 | No secrets or personal data in the tree and history | Betterleaks (with a positive control), TruffleHog, and a script for local paths and e-mail addresses | [PRIVACY-CHECK.md](PRIVACY-CHECK.md) |
 | Blocking, allowing, fail-open and configuration behave as documented | Unit tests run the gate as a subprocess | `tests/test_look_before_gate.py` |
 | README demo works | `python examples/demo.py` run by the AI tool | [PROCESS.md](PROCESS.md) "Verification" |
