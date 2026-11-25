@@ -27,10 +27,13 @@ Try the gate on a throw-away project:
 python3 examples/demo.py
 ```
 
-Expected output (path shortened to `<tmp>`):
+Expected output (path shortened to `<tmp>`; the long message is wrapped here for width):
 
 ```
-no note yet  -> (2, 'Look before you code: this call would create a new code file of 30+ lines. Run the look-before-you-code skill (search for an existing solution first) and save a note to <tmp>/demo-project/.prior-art/<topic>.md, then retry. The note must have been written within the last 6 hours.')
+no note yet  -> (2, 'Look before you code: this call would create a new code file of 30+ lines.
+                    Run the look-before-you-code skill (search for an existing solution first)
+                    and save a note to <tmp>/demo-project/.prior-art/<topic>.md, then retry.
+                    The note must have been written within the last 6 hours.')
 note written -> (0, '')
 ```
 
@@ -67,7 +70,8 @@ Environment variables, read on every call. An invalid value falls back to its de
 Set them in the environment that launches the agent, or inline in the hook command on POSIX shells:
 
 ```
-LOOK_BEFORE_MIN_LINES=50 LOOK_BEFORE_NOTES_DIR=docs/research python3 -I -S .claude/hooks/look_before_gate.py
+LOOK_BEFORE_MIN_LINES=50 LOOK_BEFORE_NOTES_DIR=docs/research \
+  python3 -I -S .claude/hooks/look_before_gate.py
 ```
 
 Decide whether `.prior-art/` is committed or ignored in your project; the gate only reads modification times.
